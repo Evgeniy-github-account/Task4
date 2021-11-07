@@ -1,4 +1,3 @@
-import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -16,7 +15,10 @@ public class BaseTest implements PrepareTestData {
             list1.add(i, i + 1);
             System.out.println(list1.get(i));
         }
-    };
+    }
+
+    ;
+
     @BeforeMethod
     @Override
     public void fillArray2() {
@@ -25,11 +27,20 @@ public class BaseTest implements PrepareTestData {
             list2.add(i, list1.get(i).toString());
             System.out.println(list2.get(i));
         }
-    };
+    }
+
+    ;
 
     @Test
     public void test1() {
-        Assert.assertEquals(list2,list1);
+        for (int i = 0; i < list1.size(); i++) {
+            for (int j = 0; j < list1.size(); j++) {
+                if (list1.get(i).toString().equals(list2.get(j)) == true) {
+                    System.out.println("Элемент " + i +
+                            " ArrayList1 равен элементу " + j + " ArrayList2.");
+                }
+            }
+        }
     }
 }
 
